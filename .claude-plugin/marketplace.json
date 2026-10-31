@@ -1,0 +1,13 @@
+{
+  "name": "bthasystem",
+  "owner": { "name": "Ty — BTHA System", "url": "https://bthasystem.io" },
+  "metadata": { "description": "Les skills créatifs de BTHA System pour Claude Code." },
+  "plugins": [
+    {
+      "name": "animation",
+      "source": "./",
+      "description": "100 styles d'animation prêts à l'emploi : /animation <style> [\"texte\"].",
+      "version": "1.0.0"
+    }
+  ]
+}
