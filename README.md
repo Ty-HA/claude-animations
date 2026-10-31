@@ -1,10 +1,11 @@
 # /animation — 100 styles d'animation pour Claude
 
-> Par **Ty — BTHA System** · [bthasystem.io](https://bthasystem.io)
+> Par **Ty — BTHA System**, développeuse full stack web2 & web3 · [bthasystem.io](https://bthasystem.io)
+> 🇫🇷 Français · [🇬🇧 English](README.en.md)
 
-Tu as commenté **ANIMATION** ? Le voilà. 🚀
+Tu as commenté **ANIMATION** ? Le voilà, et c'est **gratuit**. 🚀
 
-Un skill pour Claude qui connaît **100 styles d'animation** : glitch, synthwave, néon, particules, typographie cinétique, data viz, transitions de caméra… Tu tapes le nom du style, Claude lit la fiche technique et te code l'animation (vidéo Remotion 9:16 prête pour TikTok/Reels, ou animation web).
+Un skill pour Claude qui connaît **100 styles d'animation** : glitch, synthwave, néon, particules, typographie cinétique, data viz, transitions de caméra… Tu choisis un style, Claude lit la fiche technique que j'ai préparée et te code l'animation : une vidéo 9:16 prête pour TikTok / Reels / Shorts, ou une animation pour ton site.
 
 ```
 /animation glitch "BTHA SYSTEM"
@@ -12,20 +13,66 @@ Un skill pour Claude qui connaît **100 styles d'animation** : glitch, synthwave
 /animation odometer "48 250 abonnés"
 ```
 
-Chaque style a sa fiche dans [`skills/animation/references/`](skills/animation/references/) : ce que c'est, quand l'utiliser, la technique avec les valeurs exactes, un composant Remotion qui marche, des variations et les pièges à éviter.
+Chaque style a sa fiche dans [`skills/animation/references/`](skills/animation/references/) : ce que c'est, quand l'utiliser, la technique avec les valeurs exactes, un composant qui marche, des variations et les pièges à éviter.
+
+---
+
+## Avant de commencer : ce qu'il te faut
+
+| Tu veux… | Abonnement Claude | Logiciel | En plus |
+|---|---|---|---|
+| **Voir et tester les animations** (aperçu dans la conversation) | Gratuit possible, **Pro conseillé** ¹ | Navigateur ([claude.ai](https://claude.ai)) ou [Claude Desktop](https://claude.com/download) | Rien |
+| **Exporter de vraies vidéos MP4** pour TikTok / Reels | **Pro minimum** (Claude Code est inclus dans tous les abonnements payants) | [Claude Desktop](https://claude.com/download), onglet **Code** | [Node.js](https://nodejs.org) (version LTS), gratuit |
+
+**Prix indicatifs (octobre 2026, tarifs US hors taxes, vérifie sur [claude.com/pricing](https://claude.com/pricing)) :**
+
+| Abonnement | Prix | Pour qui |
+|---|---|---|
+| Free | 0 € | Découvrir, tester quelques aperçus |
+| **Pro** | ~20 $/mois (~17 $/mois en annuel) | ✅ **Le bon choix pour ce skill** : chat + Claude Code + export vidéo |
+| Max | 100 $/mois | Tu produis beaucoup de vidéos chaque semaine |
+| Ultra | 200 $/mois | Usage intensif / pro |
+
+¹ L'aide officielle d'Anthropic indique que les skills sont disponibles dès le plan gratuit, mais une partie de la documentation les réserve aux plans payants. Les limites d'utilisation du plan gratuit sont aussi très vite atteintes avec du code d'animation. **Pro est le minimum confortable.**
+
+**Système :** Claude Desktop tourne sur **Mac** (Intel et Apple Silicon) et **Windows** (x64 et ARM). Pas besoin de Mac !
+
+**Licence Remotion (le moteur vidéo) :** gratuite pour les particuliers, les associations et les structures de **3 personnes maximum**. Au-delà, ton entreprise a besoin d'une [licence Remotion](https://www.remotion.dev/docs/license/faq).
+
+---
+
+## ✨ Le plus simple : tout en langage naturel avec Claude Desktop
+
+C'est comme ça que je travaille : **je conçois, je décris ce que je veux, Claude exécute.** Aucune commande à connaître.
+
+1. Installe **[Claude Desktop](https://claude.com/download)** et connecte-toi avec ton compte Pro.
+2. Ouvre l'onglet **Code** (c'est Claude Code, déjà inclus dans l'app : rien d'autre à installer pour lui).
+3. Choisis un dossier vide pour tes vidéos (ex. `Documents/mes-animations`).
+4. Écris simplement :
+
+> « Installe le skill animation depuis github.com/Ty-HA/claude-animations dans mes skills personnels. »
+
+> « Vérifie que Node.js est installé, sinon explique-moi comment l'installer. »
+
+> « Crée un projet Remotion et fais-moi une vidéo TikTok de 5 secondes style glitch avec le texte "BTHA SYSTEM", puis exporte-la en MP4. »
+
+5. Claude te demande l'autorisation avant chaque action (installer, créer des fichiers, lancer le rendu) : tu valides, et ta vidéo arrive dans le dossier `out/`.
+
+Ensuite, tu enchaînes en français normal : *« Plus rapide »*, *« Mets mes couleurs : #00B5C7 et #A855F7 »*, *« Fais la même en synthwave »*, *« Ajoute mon logo »*…
 
 ---
 
 ## Installation
 
-### 🟢 Option 1 — Sans rien coder (claude.ai, app ordinateur ou mobile)
+### 🟢 Option 1 — Sans rien coder (claude.ai ou Claude Desktop, onglet Chat)
 
 1. **[⬇️ Télécharge `animation.zip`](https://github.com/Ty-HA/claude-animations/releases/latest/download/animation.zip)** (ne le décompresse pas).
-2. Sur [claude.ai](https://claude.ai) : **Paramètres → Capacités**, vérifie que **« Exécution de code et création de fichiers »** est activé.
-3. Toujours dans **Capacités**, section **Skills** : **Importer un skill** → choisis `animation.zip`.
-4. Dans une nouvelle conversation, écris : `/animation glitch "Mon texte"`.
+2. Dans **Paramètres → Capacités** (*Settings → Capabilities*), active **« Créer et modifier des fichiers »** / **exécution de code** (*Create and edit files / Code execution*). Les skills en ont besoin.
+3. Va dans **Personnaliser → Skills** (*Customize → Skills*), clique sur **+** → **Créer un skill** → **Importer un skill** (*Upload a skill*) et choisis `animation.zip`.
+4. Vérifie que le skill **animation** est activé, puis, dans une nouvelle conversation : `/animation glitch "Mon texte"`.
 
-> Sur claude.ai, Claude code l'animation et te montre l'aperçu. Pour exporter une **vidéo MP4**, passe par Claude Code (options 2 et 3).
+> L'interface de Claude change souvent : si un menu porte un nom légèrement différent, cherche « Skills » dans les paramètres.
+> Bon à savoir : les skills activés sur ton compte claude.ai sont aussi synchronisés vers Claude Code (versions récentes).
 
 ### 💻 Option 2 — Claude Code, via le marketplace de plugins
 
@@ -63,7 +110,34 @@ Par défaut : **Remotion, 1080×1920, 30 i/s, 5 secondes**. Pour le rendu :
 npx remotion render <Composition> out/video.mp4
 ```
 
-Pré-requis pour la vidéo : Node.js 18+ et un projet Remotion (`npx create-video@latest`). Claude peut le créer pour toi.
+Pré-requis pour la vidéo : Node.js (version LTS) et un projet Remotion (`npx create-video@latest`). Claude peut le créer pour toi.
+
+---
+
+## FAQ
+
+**Ça coûte combien ?**
+Le skill est **gratuit** (licence MIT). Il te faut un abonnement Claude : **Pro (~20 $/mois)** suffit pour tout faire, export MP4 compris. Node.js et Remotion sont gratuits pour un usage perso ou une petite structure (≤ 3 personnes).
+
+**Je n'ai pas de Mac.**
+Aucun problème : Claude Desktop existe sur Windows, et Remotion fonctionne sur Windows (x64), macOS et Linux.
+
+**Ça marche sur mobile ?**
+Pour l'instant, je n'ai trouvé **aucune confirmation officielle** que les skills personnalisés s'installent ou s'utilisent depuis l'app iPhone / Android. Installe et utilise le skill depuis un ordinateur (navigateur ou Claude Desktop).
+
+**« node: command not found » / erreur Node pendant le rendu ?**
+Node.js n'est pas installé (ou pas trouvé). Installe la version **LTS** depuis [nodejs.org](https://nodejs.org), **ferme et rouvre** Claude Desktop, puis redemande le rendu. Tu peux aussi écrire à Claude : *« J'ai cette erreur, aide-moi à la corriger »* en collant le message.
+
+**`/animation` ou `/animation:animation` ?**
+- Installé via **claude.ai** (zip) ou par **copie manuelle** : `/animation glitch`.
+- Installé via le **marketplace de plugins** : `/animation:animation glitch`.
+- Dans tous les cas, tu peux juste écrire *« fais-moi une animation style glitch »*.
+
+**Je peux utiliser les vidéos pour mes clients / ma marque ?**
+Oui. Le skill est sous licence MIT. Vérifie seulement la [licence Remotion](https://www.remotion.dev/docs/license/faq) si ta structure compte plus de 3 personnes.
+
+**Le style que je veux n'est pas dans la liste.**
+Tape quand même `/animation <ton idée>` : Claude te propose les 3 styles les plus proches, ou combine-en deux (`/animation glitch + synthwave`).
 
 ---
 
