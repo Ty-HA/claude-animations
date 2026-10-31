@@ -43,7 +43,8 @@ Each style has its own sheet in [`skills/animation/references/`](skills/animatio
 
 > 🧩 **What about "npm" installs?** You **don't type a single command**.
 > - **On claude.ai**: nothing to install at all, Claude runs the code in its own environment.
-> - **To export MP4s (Claude Desktop, Code tab)**: the only thing you install yourself is **Node.js** (a regular installer, like any app). The first time, Claude installs Remotion and the npm packages it needs on its own (`npm install`); it just asks for permission and you click "Allow".
+> - **To export MP4s (Claude Desktop, Code tab)**: you need **Node.js**. It's the engine that lets your computer run JavaScript code, and therefore build the video. It's free and installs like any app. **No need to know how**: just tell Claude "Install Node.js for me", it takes care of it or walks you through it step by step.
+> - Then Claude installs Remotion and the npm packages it needs on its own (`npm install`); it just asks for permission and you click "Allow".
 
 ## ✨ The easiest way: everything in plain language with Claude Desktop
 
@@ -56,7 +57,7 @@ This is how I work: **I design, I describe what I want, Claude executes.** No co
 
 > "Install the animation skill from github.com/Ty-HA/claude-animations into my personal skills."
 
-> "Check that Node.js is installed, otherwise explain how to install it."
+> "Check that Node.js is installed, otherwise install it for me."
 
 > "Create a Remotion project and make me a 5-second TikTok video in glitch style with the text "BTHA SYSTEM", then export it as MP4."
 
