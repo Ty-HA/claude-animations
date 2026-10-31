@@ -41,6 +41,10 @@ Chaque style a sa fiche dans [`skills/animation/references/`](skills/animation/r
 
 ---
 
+> 🧩 **Et les installations « npm » ?** Tu n'as **aucune commande à taper**.
+> - **Sur claude.ai** : rien à installer du tout, Claude exécute le code dans son propre environnement.
+> - **Pour exporter en MP4 (Claude Desktop, onglet Code)** : la seule chose à installer toi-même, c'est **Node.js** (un installeur classique, comme n'importe quelle app). La première fois, Claude installe tout seul Remotion et les paquets npm dont il a besoin (`npm install`) ; il te demande juste l'autorisation, tu cliques sur « Autoriser ».
+
 ## ✨ Le plus simple : tout en langage naturel avec Claude Desktop
 
 C'est comme ça que je travaille : **je conçois, je décris ce que je veux, Claude exécute.** Aucune commande à connaître.

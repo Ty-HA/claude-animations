@@ -41,6 +41,10 @@ Each style has its own sheet in [`skills/animation/references/`](skills/animatio
 
 ---
 
+> 🧩 **What about "npm" installs?** You **don't type a single command**.
+> - **On claude.ai**: nothing to install at all, Claude runs the code in its own environment.
+> - **To export MP4s (Claude Desktop, Code tab)**: the only thing you install yourself is **Node.js** (a regular installer, like any app). The first time, Claude installs Remotion and the npm packages it needs on its own (`npm install`); it just asks for permission and you click "Allow".
+
 ## ✨ The easiest way: everything in plain language with Claude Desktop
 
 This is how I work: **I design, I describe what I want, Claude executes.** No command to learn.
