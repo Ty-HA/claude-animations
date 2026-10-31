@@ -114,6 +114,35 @@ Video prerequisites: Node.js (LTS) and a Remotion project (`npx create-video@lat
 
 ---
 
+## 🪙 How many tokens it uses (and how to optimize)
+
+I'd rather be upfront: every animation uses tokens, so part of your Claude quota. Here are the real numbers, measured on the skill files (≈ 3.6 characters per token).
+
+| Step | Tokens (approx.) | When |
+|---|---|---|
+| Skill description | ~120 | Always, in every conversation (that's all Claude sees until you use it) |
+| `SKILL.md` | ~3,300 | Only when you type `/animation …` |
+| One style sheet | 500 to 1,050 (median ~750) | Only the sheet for the requested style |
+| Animation code written by Claude | ~500 to 3,000 output | For each version |
+| Checking one rendered frame | ~1,500 per image | If Claude looks at the result |
+
+**A simple animation, done cleanly: about 10,000 to 20,000 tokens.** With 3 or 4 rounds of fixes, expect 30,000 to 60,000: on every new message Claude re-reads the whole conversation (mostly from cache, which is cheaper, but it still counts).
+
+**Why the skill is already optimized**: the 100 sheets total ~74,000 tokens, but Claude only loads **one** at a time. Result: ~4,000 tokens instead of ~78,000, **about 95% savings** compared with one giant "all-in-one" prompt. That's the whole point of skills: progressive loading.
+
+### My 8 tips to save tokens
+
+1. **Say everything in the first message**: style, text, format, length, colors. `/animation neon "OPEN 24/7" 9:16 5s pink and cyan` saves 2 or 3 back-and-forths.
+2. **One conversation = one animation.** Long conversations get more expensive with every message. New animation → new conversation (or `/clear` in Claude Code).
+3. **Check with a single frame**, not a full video or 10 screenshots: "just render frame 30 and look at it".
+4. **Give precise fixes**: "the text overflows on the right, reduce it to 90px" costs far less than "it's not good, redo it".
+5. **Pick the right model**: a lighter model (Sonnet, even Haiku) is enough for a simple animation; keep the most powerful one (Opus) for complex creations or big projects.
+6. **Don't paste big files into the chat**: give the file path, Claude will read only what it needs.
+7. **Reuse**: ask Claude to save each successful animation as a reusable component instead of regenerating it for every video.
+8. **Watch your usage**: in Claude Code, `/context` shows what fills the conversation's memory and `/usage` shows your plan quota.
+
+> On a Pro or Max plan you don't pay per token: you get a quota that refills. These tips just let you do a lot more with the same plan.
+
 ## FAQ
 
 **How much does it cost?**

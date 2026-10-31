@@ -114,6 +114,35 @@ Pré-requis pour la vidéo : Node.js (version LTS) et un projet Remotion (`npx c
 
 ---
 
+## 🪙 Combien de tokens ça consomme (et comment optimiser)
+
+Je préfère te le dire franchement : chaque animation consomme des tokens, donc une part de ton quota Claude. Voici les vrais chiffres, mesurés sur les fichiers du skill (≈ 3,6 caractères par token).
+
+| Étape | Tokens (environ) | Quand |
+|---|---|---|
+| Description du skill | ~120 | Toujours, dans chaque conversation (c'est tout ce que Claude voit tant que tu ne l'utilises pas) |
+| `SKILL.md` | ~3 300 | Seulement quand tu tapes `/animation …` |
+| Une fiche de style | 500 à 1 050 (médiane ~750) | Seulement la fiche du style demandé |
+| Code de l'animation écrit par Claude | ~500 à 3 000 en sortie | À chaque version |
+| Vérifier une image du rendu | ~1 500 par image | Si Claude regarde le résultat |
+
+**Une animation simple, faite proprement : environ 10 000 à 20 000 tokens.** Avec 3 ou 4 allers-retours de corrections, compte plutôt 30 000 à 60 000 : à chaque nouveau message, Claude relit tout l'historique de la conversation (en grande partie depuis le cache, ce qui coûte moins cher, mais ça compte quand même).
+
+**Pourquoi le skill est déjà optimisé** : les 100 fiches font ~74 000 tokens au total, mais Claude n'en charge qu'**une seule** à la fois. Résultat : ~4 000 tokens au lieu de ~78 000, soit **environ 95 % d'économie** par rapport à un gros prompt « tout-en-un ». C'est le principe des skills : le chargement progressif.
+
+### Mes 8 tips pour économiser des tokens
+
+1. **Tout dire dans le premier message** : style, texte, format, durée, couleurs. `/animation neon "OPEN 24/7" 9:16 5s couleurs rose et cyan` évite 2 ou 3 questions-réponses.
+2. **Une conversation = une animation.** Les longues conversations coûtent de plus en plus cher à chaque message. Nouvelle animation → nouvelle conversation (ou `/clear` dans Claude Code).
+3. **Vérifier avec une seule image**, pas une vidéo complète ni 10 captures : « rends juste la frame 30 et regarde-la ».
+4. **Corriger précisément** : « le texte déborde à droite, réduis la taille à 90 px » coûte bien moins que « c'est pas bien, refais ».
+5. **Choisir le bon modèle** : un modèle plus léger (Sonnet, voire Haiku) suffit pour une animation simple ; garde le plus puissant (Opus) pour les créations complexes ou les gros projets.
+6. **Ne pas coller de gros fichiers dans le chat** : donne le chemin du fichier, Claude ne lira que ce qu'il faut.
+7. **Réutiliser** : demande à Claude de ranger chaque animation réussie comme composant réutilisable, au lieu de la régénérer à chaque vidéo.
+8. **Surveiller ta conso** : dans Claude Code, `/context` montre ce qui occupe la mémoire de la conversation et `/usage` ton quota d'abonnement.
+
+> Sur un abonnement Pro ou Max, tu ne paies pas au token : tu as un quota qui se recharge. Ces tips te permettent simplement d'en faire beaucoup plus avec le même abonnement.
+
 ## FAQ
 
 **Ça coûte combien ?**
