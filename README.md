@@ -18,35 +18,32 @@ Chaque style a sa fiche dans [`skills/animation/references/`](skills/animation/r
 
 ## Installation
 
-### Option 1 — Claude Code, via le marketplace de plugins (recommandé)
+### 🟢 Option 1 — Sans rien coder (claude.ai, app ordinateur ou mobile)
 
-Dans Claude Code :
+1. **[⬇️ Télécharge `animation.zip`](https://github.com/Ty-HA/claude-animations/releases/latest/download/animation.zip)** (ne le décompresse pas).
+2. Sur [claude.ai](https://claude.ai) : **Paramètres → Capacités**, vérifie que **« Exécution de code et création de fichiers »** est activé.
+3. Toujours dans **Capacités**, section **Skills** : **Importer un skill** → choisis `animation.zip`.
+4. Dans une nouvelle conversation, écris : `/animation glitch "Mon texte"`.
+
+> Sur claude.ai, Claude code l'animation et te montre l'aperçu. Pour exporter une **vidéo MP4**, passe par Claude Code (options 2 et 3).
+
+### 💻 Option 2 — Claude Code, via le marketplace de plugins
 
 ```
-/plugin marketplace add bthasystem/claude-animations-skill
+/plugin marketplace add Ty-HA/claude-animations
 /plugin install animation@bthasystem
 ```
 
-> ⚠️ `bthasystem` est un **nom provisoire** : remplace-le par le vrai compte GitHub qui héberge ce repo.
-
 Avec le plugin, la commande s'appelle `/animation:animation` (les skills de plugin sont préfixés par le nom du plugin). Tu peux aussi simplement écrire « fais-moi une animation glitch » : Claude charge le skill tout seul.
 
-### Option 2 — Claude Code, copie manuelle (commande courte `/animation`)
+### 💻 Option 3 — Claude Code, copie manuelle (commande courte `/animation`)
 
 ```bash
-git clone https://github.com/bthasystem/claude-animations-skill.git
-cp -r claude-animations-skill/skills/animation ~/.claude/skills/
+git clone https://github.com/Ty-HA/claude-animations.git
+cp -r claude-animations/skills/animation ~/.claude/skills/
 ```
 
 Redémarre Claude Code : la commande `/animation` est disponible dans tous tes projets.
-
-### Option 3 — claude.ai (app web / desktop)
-
-1. Télécharge le dossier `skills/animation` et compresse-le en **`animation.zip`** (le zip doit contenir le dossier `animation/` avec `SKILL.md` dedans).
-2. Sur claude.ai : **Settings → Capabilities → Skills → Upload skill**, choisis le zip.
-3. Dans une conversation, demande « /animation glitch » ou « une animation style synthwave ».
-
-> Sur claude.ai, Claude peut écrire le code et l'aperçu web ; pour **rendre une vidéo MP4**, il faut Claude Code (ou ton ordi) avec Node.js et Remotion.
 
 ---
 
